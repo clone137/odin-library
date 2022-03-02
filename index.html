@@ -8,5 +8,62 @@
     <script src="script.js" defer></script>
     <title>Library</title>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <div class="header"><h1>the Odin project: library</h1></div>
+      <div class="main">
+        <div>
+          <button type="button" class="add-book-button" id="addBookButton">
+            add book
+          </button>
+        </div>
+        <div class="book-container">list of books will be here</div>
+      </div>
+      <div class="footer">copyright © 2022 clone137</div>
+
+      <!-- form -->
+      <div class="add-book-modal" id="addBookModal">
+        <form class="add-book-form" id="addBookForm">
+          <h3>add book</h3>
+          <input
+            type="text"
+            class="input"
+            id="title"
+            placeholder="Book title"
+            required
+            maxlength="50"
+          />
+          <input
+            type="text"
+            class="input"
+            id="author"
+            placeholder="Book author"
+            required
+            maxlength="50"
+          />
+          <input
+            type="number"
+            class="input"
+            id="pages"
+            placeholder="Number of pages"
+            required
+            max="2000"
+          />
+          <div class="is-read">
+            <label for="is-read">Have you read it?</label>
+            <input type="checkbox" class="checkbox" id="isRead" />
+          </div>
+          <button type="submit">Add Book</button>
+          <button
+            type="button"
+            class="add-book-form-cancel"
+            id="addBookFormCancel"
+          >
+            Cancel
+          </button>
+        </form>
+      </div>
+      <!-- /form -->
+    </div>
+  </body>
 </html>
