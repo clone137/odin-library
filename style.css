@@ -2,9 +2,43 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: 'Ubuntu', sans-serif;
+}
+
 .container {
   display: grid;
   grid-template-rows: 10vh 80vh 10vh;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #c2c5aa;
+  background-color: #333d29;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* justify-content: center; */
+  align-items: center;
+  padding: 10vh 20vw;
+  background-color: #c2c5aa;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #c2c5aa;
+  background-color: #333d29;
+  font-size: 2rem;
+  font-weight: 300;
 }
 
 .add-book-modal {
@@ -25,7 +59,7 @@
   height: 20vh;
   left: 35vw;
   top: 20vh;
-  background-color: #ffffff;
+  background-color: #a4ac86;
   box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.4);
 }
 
