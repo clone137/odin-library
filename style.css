@@ -4,7 +4,7 @@
 
 body {
   font-family: 'Ubuntu', sans-serif;
-  margin: 0px;
+  margin: 0;
 }
 
 .container {
@@ -12,7 +12,7 @@ body {
   grid-template-rows: 10vh 80vh 10vh;
 }
 
-.header {
+#header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,27 +22,51 @@ body {
   font-weight: 700;
 }
 
-.main {
+#main {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  /* justify-content: center; */
-  align-items: center;
-  padding: 10vh 20vw;
+  padding: 5vh 10vw;
   background-color: #c2c5aa;
 }
 
-.footer {
+#newBookButtonDiv {
+  display: grid;
+  grid-row: 1 / 2;
+  grid-column: 5 / 6;
+  justify-items: center;
+  align-items: center;
+  border-radius: 8px;
+  padding: 10px 0 10px 0;
+}
+
+#newBookButton {
+  color: #c2c5aa;
+  background-color: #333d29;
+  width: 8vw;
+  height: 3vh;
+  font-size: 1.2em;
+  font-weight: 300;
+  border-radius: 8px;
+}
+
+#bookList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#footer {
   display: flex;
   justify-content: center;
   align-items: center;
   color: #c2c5aa;
   background-color: #333d29;
-  font-size: 2rem;
+  font-size: 1.3rem;
   font-weight: 300;
 }
 
-.add-book-modal {
+.new-book-modal {
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -50,18 +74,37 @@ body {
   top: 0;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.2s;
-  background-color: rgba(0, 0, 0, 0.4);
+  transition: all 0.1s;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px) saturate(100%) contrast(50%);
 }
 
-.add-book-modal-content {
+#newBookModalContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   position: fixed;
   width: 30vw;
   height: 20vh;
   left: 35vw;
-  top: 20vh;
+  top: 15vh;
   background-color: #a4ac86;
   box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+}
+
+#newBookModalContentHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: #c2c5aa;
+  background-color: #333d29;
+  padding: 0.1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 8px 8px 0 0;
 }
 
 .open {

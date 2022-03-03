@@ -17,22 +17,28 @@
   </head>
   <body>
     <div class="container">
-      <div class="header"><h1>the Odin project: library</h1></div>
-      <div class="main">
-        <div>
-          <button type="button" class="add-book-button" id="addBookButton">
-            add book
+      <div id="header"><h1>the Odin project: library</h1></div>
+      <div id="main">
+        <div id="newBookButtonDiv">
+          <button type="button" class="new-book-button" id="newBookButton">
+            new book
           </button>
         </div>
-        <div class="book-container">list of books will be here</div>
+        <div id="bookList">there are currently no books in the library</div>
       </div>
-      <div class="footer">copyright © 2022 clone137</div>
+      <div id="footer">copyright © 2022 clone137</div>
 
       <!-- form -->
-      <div class="add-book-modal" id="addBookModal">
-        <div class="add-book-modal-content" id="addBookModalContent">
-          <form class="add-book-form" id="addBookForm">
-            <h3>add book</h3>
+      <div class="new-book-modal" id="newBookModal">
+        <div class="new-book-modal-content" id="newBookModalContent">
+          <div
+            class="new-book-modal-content-header"
+            id="newBookModalContentHeader"
+          >
+            new book
+          </div>
+          <form class="new-book-form" id="newBookForm">
+            <label for="title">Title</label>
             <input
               type="text"
               class="input"
@@ -41,6 +47,7 @@
               required
               maxlength="50"
             />
+            <label for="author">Author</label>
             <input
               type="text"
               class="input"
@@ -49,6 +56,7 @@
               required
               maxlength="50"
             />
+            <label for="pages">Pages</label>
             <input
               type="number"
               class="input"
@@ -57,15 +65,16 @@
               required
               max="2000"
             />
+            <label for="is-read">Have you read it?</label>
             <div class="is-read">
-              <label for="is-read">Have you read it?</label>
+              <label for="is-read"></label>
               <input type="checkbox" class="checkbox" id="isRead" />
             </div>
             <button type="submit">Add Book</button>
             <button
               type="button"
-              class="add-book-form-cancel"
-              id="addBookFormCancel"
+              class="new-book-form-cancel"
+              id="newBookFormCancel"
             >
               Cancel
             </button>

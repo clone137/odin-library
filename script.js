@@ -1,7 +1,6 @@
-const addBookButton = document.getElementById('addBookButton');
-const addBookFormCancel = document.getElementById('addBookFormCancel');
-const addBookModal = document.getElementById('addBookModal');
-const addBookModalContent = document.getElementById('addBookModalContent');
+const newBookButton = document.getElementById('newBookButton');
+const newBookFormCancel = document.getElementById('newBookFormCancel');
+const newBookModal = document.getElementById('newBookModal');
 
 let myLibrary = [];
 
@@ -13,14 +12,14 @@ function addBookToLibrary() {
   // do stuff here
 }
 
-addBookButton.addEventListener('click', (event) => {
+newBookButton.addEventListener('click', (event) => {
   event.preventDefault();
-  addBookModal.classList.add('open');
+  newBookModal.classList.add('open');
 
   // close the modal if you click anywhere outside of the content
   window.onclick = function (event) {
-    if (event.target === addBookFormCancel || event.target === addBookModal) {
-      addBookModal.classList.remove('open');
+    if (event.target === newBookFormCancel || event.target === newBookModal) {
+      newBookModal.classList.remove('open');
     }
   };
 });
