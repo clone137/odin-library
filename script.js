@@ -31,9 +31,13 @@ class Book {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.read = read;
+    // this.read = read;
   }
 }
+
+Book.prototype.toggle = function () {
+  this.read = !this.read;
+};
 
 function addBookToLibrary() {
   const title = document.getElementById('title');
@@ -89,7 +93,7 @@ function removeEventHandlers() {
 }
 
 const deleteBookFromLibrary = (event) => {
-  const index = event.target.id;
+  const index = event.target.id.replace('delete', '');
   if (
     confirm(
       `Are you sure you want to delete "${myLibrary[index].title}" from the library?`
@@ -101,6 +105,14 @@ const deleteBookFromLibrary = (event) => {
   }
 };
 
+const toogleBookRead = (event) => {
+  const index = event.target.id.replace('toggle', '');
+  // myLibrary[index].read = !myLibrary[index].read;
+  myLibrary[index].toggle();
+  removeEventHandlers();
+  renderLibraryHTML();
+};
+
 function renderLibraryHTML() {
   libraryContainer.innerHTML = '';
   myLibrary.forEach((book, index) => {
@@ -110,16 +122,19 @@ function renderLibraryHTML() {
         <div class="bookAuthor"><strong>Author:</strong> ${book.author}</div>
         <div class="bookPages"><strong>Pages:</strong> ${book.pages}</div>
         <div class="bookRead"><strong>Read:</strong> ${book.read}</div>
-        <div class="bookDelete"><span class="material-icons-outlined md-36 delete-button" id="${index}">delete</span></div>
+        <div class="bookReadToggle"><span class="material-icons-outlined md-36 toggle-button" id="toggle${index}">menu_book</span></div>
+        <div class="bookDelete"><span class="material-icons-outlined md-36 delete-button" id="delete${index}">delete</span></div>
       </div>
       `;
     libraryContainer.insertAdjacentHTML('afterbegin', bookHtml);
 
-    myLibrary[index].deleteButton = document.getElementById(`${index}`);
+    myLibrary[index].deleteButton = document.getElementById(`delete${index}`);
     myLibrary[index].deleteButton.addEventListener(
       'click',
       deleteBookFromLibrary
     );
+    myLibrary[index].toggleButton = document.getElementById(`toggle${index}`);
+    myLibrary[index].toggleButton.addEventListener('click', toogleBookRead);
   });
   if (myLibrary.length === 0) {
     libraryContainer.insertAdjacentHTML('afterbegin', `no books here`);
