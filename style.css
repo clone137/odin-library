@@ -109,6 +109,17 @@ body {
   transform: scale(1.01);
 }
 
+.bookReadToggle {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  cursor: pointer;
+}
+
+.bookReadToggle:active {
+  transform: scale(1.01);
+}
+
 #footer {
   display: flex;
   justify-content: center;
