@@ -138,6 +138,7 @@ const deleteBookFromLibrary = (event) => {
 const toogleBookRead = (event) => {
   const index = event.target.id.replace('toggle', '');
   myLibrary[index].toggleRead();
+  updateLocalStorage();
   removeEventHandlers();
   renderLibraryHTML();
 };
@@ -145,19 +146,21 @@ const toogleBookRead = (event) => {
 function renderLibraryHTML() {
   libraryContainer.innerHTML = '';
   myLibrary.forEach((book, index) => {
-    let bookRead = book.read === true ? 'Yes' : 'No';
+    let bookRead = book.read === true ? 'Read' : 'Unread';
     let bookReadIcon = book.read === true ? 'book' : 'menu_book';
     const bookHtml = `
       <div class="bookCard" id="${index}">
-        <div class="bookTitle"><strong>Title:</strong> ${book.title}</div>
-        <div class="bookAuthor"><strong>Author:</strong> ${book.author}</div>
-        <div class="bookPages"><strong>Pages:</strong> ${book.pages}</div>
-        <div class="bookRead"><strong>Read:</strong> ${bookRead}</div>
-        <div class="bookReadToggle"><span class="material-icons-outlined md-36 toggle-button" id="toggle${index}">${bookReadIcon}</span></div>
-        <div class="bookDelete"><span class="material-icons-outlined md-36 delete-button" id="delete${index}">delete</span></div>
+        <div>
+          <div class="bookTitle">${book.title}</div>
+          <div class="bookAuthor">by <strong>${book.author}</strong></div>
+        </div>
+        <div>
+          <div class="bookInfo"><span>${book.pages} pages</span><span class="readInfo toggle-button ${bookRead}" id="toggle${index}">${bookRead}</span></div>
+          <div class="bookDelete"><span class="material-icons-outlined md-24 delete-button" id="delete${index}">delete</span></div>
+        </div>
       </div>
       `;
-    libraryContainer.insertAdjacentHTML('afterbegin', bookHtml);
+    libraryContainer.insertAdjacentHTML('beforeend', bookHtml);
 
     myLibrary[index].deleteButton = document.getElementById(`delete${index}`);
     myLibrary[index].deleteButton.addEventListener(
