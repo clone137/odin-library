@@ -4,7 +4,9 @@ const newBookFormCancel = document.getElementById('newBookFormCancel');
 const newBookModal = document.getElementById('newBookModal');
 const libraryContainer = document.getElementById('libraryContainer');
 
-let myLibrary = [
+let myLibrary = [];
+
+const myStaticLibrary = [
   { title: 'The Stand', author: 'Stephen King', pages: '823', read: true },
   {
     title: 'Fire & Blood',
@@ -31,13 +33,39 @@ class Book {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    // this.read = read;
+    this.read = read;
+  }
+  toggleRead() {
+    this.read = !this.read;
   }
 }
 
-Book.prototype.toggle = function () {
-  this.read = !this.read;
-};
+// save to localStorage
+function updateLocalStorage() {
+  localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
+}
+
+// fetch from localStorage
+function fetchFromLocalStorage() {
+  let cacheLibrary;
+
+  if (localStorage.getItem('myLibrary')) {
+    cacheLibrary = JSON.parse(localStorage.getItem('myLibrary'));
+  } else {
+    cacheLibrary = myStaticLibrary;
+  }
+
+  // recreating objects with new because the objects loaded from localStorage were missing the toggleRead method (why?)
+  cacheLibrary.forEach((book, index) => {
+    const newBook = new Book(
+      cacheLibrary[index].title,
+      cacheLibrary[index].author,
+      cacheLibrary[index].pages,
+      cacheLibrary[index].read
+    );
+    myLibrary.push(newBook);
+  });
+}
 
 function addBookToLibrary() {
   const title = document.getElementById('title');
@@ -54,6 +82,7 @@ function addBookToLibrary() {
   );
 
   myLibrary.push(newBook);
+  updateLocalStorage();
   closeNewBookModal();
 }
 
@@ -100,6 +129,7 @@ const deleteBookFromLibrary = (event) => {
     )
   ) {
     myLibrary.splice(index, 1);
+    updateLocalStorage();
     removeEventHandlers();
     renderLibraryHTML();
   }
@@ -107,8 +137,7 @@ const deleteBookFromLibrary = (event) => {
 
 const toogleBookRead = (event) => {
   const index = event.target.id.replace('toggle', '');
-  // myLibrary[index].read = !myLibrary[index].read;
-  myLibrary[index].toggle();
+  myLibrary[index].toggleRead();
   removeEventHandlers();
   renderLibraryHTML();
 };
@@ -142,4 +171,6 @@ function renderLibraryHTML() {
   console.log(myLibrary);
 }
 
+// localStorage.clear();
+fetchFromLocalStorage();
 renderLibraryHTML();
