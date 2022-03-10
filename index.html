@@ -15,6 +15,11 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
       rel="stylesheet"
     />
+    <!-- include fontawesome icons -->
+    <script
+      src="https://kit.fontawesome.com/4c536a6bd5.js"
+      crossorigin="anonymous"
+    ></script>
 
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
@@ -34,7 +39,10 @@
         </div>
       </div>
       <div id="footer">
-        copyright © 2022 <a href="https://github.com/clone137">clone137</a>
+        copyright © 2022
+        <a href="https://github.com/clone137"
+          >clone137 <span class="fab fa-github"></span
+        ></a>
       </div>
 
       <!-- form -->
@@ -46,47 +54,61 @@
           >
             new book
           </div>
+
           <form action="" class="new-book-form" id="newBookForm">
-            <label for="title">Title</label>
-            <input
-              type="text"
-              class="input"
-              id="title"
-              placeholder="Book title"
-              required
-              maxlength="50"
-            />
-            <label for="author">Author</label>
-            <input
-              type="text"
-              class="input"
-              id="author"
-              placeholder="Book author"
-              required
-              maxlength="50"
-            />
-            <label for="pages">Pages</label>
-            <input
-              type="number"
-              class="input"
-              id="pages"
-              placeholder="Number of pages"
-              required
-              max="2000"
-            />
-            <label for="read">Have you read it?</label>
-            <div class="read">
-              <label for="read"></label>
-              <input type="checkbox" class="checkbox" id="read" />
+            <div class="form-content" id="formContent">
+              <div>
+                <label for="title"></label>
+                <input
+                  type="text"
+                  class="input"
+                  id="title"
+                  placeholder="Book title"
+                  required
+                  maxlength="80"
+                  size="40"
+                  autofocus
+                />
+              </div>
+              <div>
+                <label for="author"></label>
+                <input
+                  type="text"
+                  class="input"
+                  id="author"
+                  placeholder="Book author"
+                  required
+                  maxlength="50"
+                  size="40"
+                />
+              </div>
+              <div>
+                <label for="pages"></label>
+                <input
+                  type="number"
+                  class="input"
+                  id="pages"
+                  placeholder="Number of pages"
+                  required
+                  max="2000"
+                  size="40"
+                />
+              </div>
+              <div>
+                <label for="read">Have you read it?</label>
+                <input type="checkbox" class="checkbox" id="read" />
+              </div>
+              <div id="submitAndCancel">
+                <button type="submit" id="submit">Add Book</button>
+                <button
+                  type="button"
+                  class="new-book-form-cancel"
+                  id="newBookFormCancel"
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
-            <button type="submit">Add Book</button>
-            <button
-              type="button"
-              class="new-book-form-cancel"
-              id="newBookFormCancel"
-            >
-              Cancel
-            </button>
           </form>
         </div>
       </div>
