@@ -145,13 +145,15 @@ const toogleBookRead = (event) => {
 function renderLibraryHTML() {
   libraryContainer.innerHTML = '';
   myLibrary.forEach((book, index) => {
+    let bookRead = book.read === true ? 'Yes' : 'No';
+    let bookReadIcon = book.read === true ? 'book' : 'menu_book';
     const bookHtml = `
       <div class="bookCard" id="${index}">
         <div class="bookTitle"><strong>Title:</strong> ${book.title}</div>
         <div class="bookAuthor"><strong>Author:</strong> ${book.author}</div>
         <div class="bookPages"><strong>Pages:</strong> ${book.pages}</div>
-        <div class="bookRead"><strong>Read:</strong> ${book.read}</div>
-        <div class="bookReadToggle"><span class="material-icons-outlined md-36 toggle-button" id="toggle${index}">menu_book</span></div>
+        <div class="bookRead"><strong>Read:</strong> ${bookRead}</div>
+        <div class="bookReadToggle"><span class="material-icons-outlined md-36 toggle-button" id="toggle${index}">${bookReadIcon}</span></div>
         <div class="bookDelete"><span class="material-icons-outlined md-36 delete-button" id="delete${index}">delete</span></div>
       </div>
       `;
